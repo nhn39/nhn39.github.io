@@ -8,54 +8,76 @@ const images = [
     'static/img/7.JPG',
     'static/img/8.JPEG',
     'static/img/9.JPEG',
+
 ];
 
 let isSlideShow = false; // Toggle state
-
 
 function displayImages() {
     const gallery = document.getElementById('gallery');
     gallery.innerHTML = '';  // Clear the gallery content
 
     if (isSlideShow) {
-        // Display images as a slideshow
-        const slideshowContainer = document.createElement('div');
-        slideshowContainer.className = 'slideshow';
+        // Main display for the large image
+        const mainImageDisplay = document.createElement('img');
+        mainImageDisplay.src = images[0];
+        mainImageDisplay.className = 'main-image';
+        gallery.appendChild(mainImageDisplay);
+
+        // Container for thumbnails
+        const thumbnailContainer = document.createElement('div');
+        thumbnailContainer.className = 'thumbnail-container';
+
+        // images.forEach((img, index) => {
+        //     const thumbnail = document.createElement('img');
+        //     thumbnail.src = img;
+        //     thumbnail.className = 'thumbnail';
+        //     thumbnail.addEventListener('click', () => {
+        //         mainImageDisplay.src = img; // Change the main image when thumbnail is clicked
+        //     });
+        //     thumbnailContainer.appendChild(thumbnail);
+        // });
+        
         images.forEach((img, index) => {
+            const thumbnail = document.createElement('img');
+            thumbnail.src = img;
+            thumbnail.className = 'thumbnail';
+            thumbnail.style.width = '100px';
+            thumbnail.style.height = '75px';
+            thumbnail.style.objectFit = 'cover';
+            thumbnail.style.marginRight = '5px';
+            thumbnail.addEventListener('click', () => {
+                mainImageDisplay.src = img; // Change the main image when thumbnail is clicked
+                currentSlide = index; // Update current slide
+            });
+            thumbnailContainer.appendChild(thumbnail);
+        });
+
+        gallery.appendChild(thumbnailContainer);
+        enableSlideshowControls(mainImageDisplay, images); // Assuming you modify this function
+    } else {
+        // Display images as a grid
+        const gridContainer = document.createElement('div');
+        gridContainer.className = 'grid';
+        images.forEach(img => {
             const imageElement = document.createElement('img');
             imageElement.src = img;
-            imageElement.style.display = index === 0 ? 'block' : 'none';  // Show only the first image initially
-            slideshowContainer.appendChild(imageElement);
+            imageElement.className = 'grid-item';
+            gridContainer.appendChild(imageElement);
         });
-        gallery.appendChild(slideshowContainer);
-        enableSlideshowControls(slideshowContainer);
-    }else{
-    // Display images as a grid
-    const gridContainer = document.createElement('div');
-    gridContainer.className = 'grid';
-    images.forEach(img => {
-        const imageElement = document.createElement('img');
-        imageElement.src = img;
-        imageElement.className = 'grid-item';
-        gridContainer.appendChild(imageElement);
-    });
-    gallery.appendChild(gridContainer);
-}
+        gallery.appendChild(gridContainer);
+    }
 }
 
-function enableSlideshowControls(container) {
+function enableSlideshowControls(mainImage, images) {
     let currentSlide = 0;
-    const slides = container.querySelectorAll('img');
-    function scrollSlides(event) {
-        if (event.deltaY > 0) currentSlide++;
-        else currentSlide--;
-        currentSlide = Math.max(0, Math.min(currentSlide, slides.length - 1));  // Limit the currentSlide index
-        slides.forEach((slide, index) => {
-            slide.style.display = index === currentSlide ? 'block' : 'none';
-        });
-    }
-    container.addEventListener('wheel', scrollSlides, {passive: false});
+    const nextSlide = () => {
+        currentSlide = (currentSlide + 1) % images.length;
+        mainImage.src = images[currentSlide];
+    };
+    mainImage.addEventListener('click', nextSlide);
 }
+
 
 document.getElementById('toggleView').addEventListener('click', () => {
     isSlideShow = !isSlideShow;
