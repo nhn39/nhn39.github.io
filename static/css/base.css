@@ -92,3 +92,7 @@ img {
 .nav-link {
     padding-right: 0.5rem; /* Adjust for better spacing between links */
 }
+
+.indented {
+    text-indent: 20px;
+}
