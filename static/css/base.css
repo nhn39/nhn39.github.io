@@ -109,6 +109,7 @@ img {
 
 .navbar-nav {
     flex-direction: row !important;
+    z-index: 1;
 }
 
 .nav-item {
@@ -121,4 +122,14 @@ img {
 
 .indented {
     text-indent: 20px;
+}
+
+#background-video {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 85vw;
+    height: calc(100vh - 56px); /* Subtract the height of the navbar */
+    object-fit: cover;
+    overflow: hidden;
 }
