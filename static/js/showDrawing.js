@@ -4,6 +4,10 @@ const images = [
     'static/img/3.JPG',
     'static/img/4.JPG',
     'static/img/5.JPEG',
+    'static/img/6.JPEG',
+    'static/img/7.JPG',
+    'static/img/8.JPEG',
+    'static/img/9.JPEG',
 ];
 
 let isSlideShow = false; // Toggle state
