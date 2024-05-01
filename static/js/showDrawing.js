@@ -3,11 +3,10 @@ const images = [
     'static/img/2.JPG',
     'static/img/3.JPG',
     'static/img/4.JPG',
-    'static/img/5.JPEG',
-    
 ];
 
 let isSlideShow = false; // Toggle state
+
 
 function displayImages() {
     const gallery = document.getElementById('gallery');
