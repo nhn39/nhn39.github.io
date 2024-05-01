@@ -15,6 +15,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     <a class="nav-link" href="projects.html">Projects</a>
                 </li>
                 <li class="nav-item">
+                <a class="nav-link" href="drawings.html">My Drawings</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="recordings.html">My recordings</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
                 </li>
             </ul>
