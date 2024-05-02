@@ -11,7 +11,7 @@ const images = [
 
 ];
 
-let isSlideShow = true; // Toggle state
+let isSlideShow = false; // Toggle state
 
 function displayImages() {
     const gallery = document.getElementById('gallery');
