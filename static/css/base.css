@@ -78,11 +78,11 @@ img {
     height: 100%;
     object-fit: cover;
     display: block;
-}
+}*/
 
 .grid-item:hover {
     transform: scale(1.05); 
-} */
+} 
 
 /* .slideshow {
     display: flex;
