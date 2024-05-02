@@ -119,8 +119,14 @@ img {
 
 .nav-link {
     padding-right: 0.5rem; /* Adjust for better spacing between links */
-    color: hsl(298, 89%, 17%); /* Adjust color for all navbar links */
+    color: hsl(268, 91%, 21%) !important; /* Adjust color for all navbar links */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    transition: color 0.3s ease;
+}
 
+.nav-link:hover {
+    /* color: #a057ff !important;  */
+    text-shadow: 0 0 10px rgba(255, 214, 52, 0.875) !important;
 }
 
 .indented {
