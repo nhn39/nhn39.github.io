@@ -11,6 +11,7 @@ const images = [
     'static/img/10.JPEG',
     'static/img/11.JPEG',
     'static/img/12.JPEG',
+    'static/img/13.JPEG',
 
 
 
