@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const navbar = `
+document.addEventListener("DOMContentLoaded", function () {
+  const navbar = `
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Nam Nguyen</a>
             <ul class="navbar-nav">
@@ -18,7 +18,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
                 </li>
+                <li class="nav-item"> 
+                <a class="nav-link" href="metronome.html">Metronome</a>
+                </li>
             </ul>
     </nav>`;
-    document.body.insertAdjacentHTML('afterbegin', navbar);
+  document.body.insertAdjacentHTML("afterbegin", navbar);
 });
