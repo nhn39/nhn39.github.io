@@ -2,13 +2,38 @@ const audioContext = new AudioContext();
 let isPlaying = false;
 let secondsPerBeat;
 let nextNoteTime;
-// let metronomeInterval;
+let metronomeInterval;
+const tapTimes = [];
+
 const tempoSlider = document.getElementById("tempo");
 const tempoValue = document.getElementById("tempoValue");
+const status = document.getElementById("status");
 
 tempoSlider.addEventListener("input", function () {
   tempoValue.textContent = tempoSlider.value + " BPM";
+
+  // secondsPerBeat = 60 / tempoSlider.value;
+  console.log(secondsPerBeat);
+
+  if (isPlaying) {
+    // clearInterval(metronomeInterval);
+    // nextNoteTime = audioContext.currentTime;
+    // scheduleBeep(nextNoteTime);
+    // metronomeInterval = setInterval(scheduleBeep, secondsPerBeat * 1000);
+    runMetronome();
+  }
 });
+
+function runMetronome() {
+  clearInterval(metronomeInterval);
+  secondsPerBeat = 60 / tempoSlider.value;
+  nextNoteTime = audioContext.currentTime;
+
+  animatePendulum();
+  bob.classList.add("moving");
+  scheduleBeep();
+  metronomeInterval = setInterval(scheduleBeep, secondsPerBeat * 1000);
+}
 
 const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
@@ -26,30 +51,83 @@ function Beep(time) {
 function scheduleBeep() {
   // Implementation for scheduling beep
   Beep(nextNoteTime);
+  flashBob();
   nextNoteTime += secondsPerBeat;
 }
 
 startBtn.addEventListener("click", function () {
   // create audio context here
   console.log("Start button clicked");
-
-  secondsPerBeat = 60 / tempoSlider.value;
+  if (isPlaying) {
+    return;
+  }
+  isPlaying = true;
+  audioContext.resume();
+  // secondsPerBeat = 60 / tempoSlider.value;
   console.log(secondsPerBeat);
-  nextNoteTime = audioContext.currentTime;
-  scheduleBeep(nextNoteTime);
-  //   for (let i = 0; i < 4; i++) {
-  //     Beep(nextNoteTime);
-  //     nextNoteTime += secondsPerBeat;
-  //   }
-  setInterval(scheduleBeep, secondsPerBeat * 1000);
+  // nextNoteTime = audioContext.currentTime;
+  // scheduleBeep(nextNoteTime);
+  // //   for (let i = 0; i < 4; i++) {
+  // //     Beep(nextNoteTime);
+  // //     nextNoteTime += secondsPerBeat;
+  // //   }
+  // metronomeInterval = setInterval(scheduleBeep, secondsPerBeat * 1000);
+  runMetronome();
+  status.textContent = "Playing";
 });
 
 stopBtn.addEventListener("click", function () {
   console.log("Stop button clicked");
+  clearInterval(metronomeInterval);
+  isPlaying = false;
+  bob.classList.remove("moving");
+  status.textContent = "Stopped";
   // stop the metronome here
 });
 
 tapBtn.addEventListener("click", function () {
   console.log("Tap button clicked");
   // implement tap tempo functionality here
+  const currentTime = audioContext.currentTime;
+
+  if (tapTimes.length > 0 && currentTime - tapTimes[tapTimes.length - 1] > 6) {
+    tapTimes.length = 0;
+  }
+
+  tapTimes.push(currentTime);
+
+  if (tapTimes.length > 1) {
+    const intervals = [];
+    for (let i = 1; i < tapTimes.length; i++) {
+      intervals.push(tapTimes[i] - tapTimes[i - 1]);
+    }
+    let sum = 0;
+
+    for (let i = 0; i < intervals.length; i++) {
+      sum += intervals[i];
+    }
+
+    const averageInterval = sum / intervals.length;
+    // const averageInterval = intervals.reduce((a, b) => a + b, 0) / intervals.length;
+    const newTempo = 60 / averageInterval;
+    tempoSlider.value = newTempo;
+    tempoValue.textContent = Math.round(newTempo) + " BPM";
+    if (isPlaying) {
+      runMetronome();
+    }
+  }
 });
+
+const bob = document.getElementById("bob");
+
+function animatePendulum() {
+  bob.style.animationDuration = secondsPerBeat + "s";
+}
+
+function flashBob(time) {
+  bob.classList.add("flash");
+
+  setTimeout(function () {
+    bob.classList.remove("flash");
+  }, 100);
+}

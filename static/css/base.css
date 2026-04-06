@@ -190,3 +190,48 @@ img {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.pendulum-area {
+  width: 280px;
+  margin: 30px auto;
+}
+
+.wire {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: #333;
+  border-radius: 999px;
+}
+
+.bob {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  background: #555;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.bob.moving {
+  animation-name: slideBob;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes slideBob {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - 28px);
+  }
+}
+
+.bob.flash {
+  background: #ff4d4d;
+  box-shadow: 0 0 16px rgba(255, 77, 77, 0.8);
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Practice Genealogy</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="static/css/base.css" />
+    <link rel="stylesheet" href="static/css/genealogy.css" />
+
+    <script src="static/js/loadNavBar.js"></script>
+  </head>
+
+  <body>
+    <main class="page">
+      <section class="root">
+        <h1>Expression / Narrative</h1>
+        <p>
+          A living genealogy of my creative practice. Hover across disciplines
+          to reveal relationships, and click selected keywords to open video
+          works, process studies, and embedded media.
+        </p>
+      </section>
+
+      <section class="genealogy-row" id="topRow"></section>
+      <section class="genealogy-row" id="bottomRow"></section>
+    </main>
+
+    <!-- video modal -->
+    <div class="video-modal hidden" id="videoModal">
+      <div class="video-modal-content">
+        <button class="close-modal" id="closeModal">&times;</button>
+        <h3 id="modalTitle">Video</h3>
+        <div class="video-container" id="videoContainer"></div>
+      </div>
+    </div>
+
+    <script src="static/js/genealogy.js"></script>
+  </body>
+</html>

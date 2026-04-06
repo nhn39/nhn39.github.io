@@ -15,11 +15,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li class="nav-item">
                 <a class="nav-link" href="recordings.html">My recordings</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
                 <li class="nav-item"> 
                 <a class="nav-link" href="metronome.html">Metronome</a>
+                </li>
+                <li class="nav-item"> 
+                <a class="nav-link" href="Foucault’s concept of genealogy.html">Foucault</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
                 </li>
             </ul>
     </nav>`;
