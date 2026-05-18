@@ -202,7 +202,11 @@ document.body.addEventListener("click", function (event) {
     event.target.closest("#muteIcon") ||
     event.target.closest("control") ||
     event.target.closest("#soundStyle") ||
-    event.target.closest("select")
+    event.target.closest("select") ||
+    event.target.closest("#helpBtn") ||
+    event.target.closest("#helpModal") ||
+    event.target.closest("#closeHelp") ||
+    event.target.closest("#beatsPerMeasure")
   ) {
     return;
   }
@@ -210,7 +214,7 @@ document.body.addEventListener("click", function (event) {
   console.log("Background tapped");
   flashTapArea();
 
-  const currentTime = audioContext.currentTime;
+  const currentTime = performance.now() / 1000;
 
   if (tapTimes.length > 0 && currentTime - tapTimes[tapTimes.length - 1] > 6) {
     tapTimes.length = 0;
@@ -290,3 +294,22 @@ function flashTapArea() {
     app.classList.remove("tap-flash");
   }, 80);
 }
+
+const helpBtn = document.getElementById("helpBtn");
+const helpModal = document.getElementById("helpModal");
+const closeHelp = document.getElementById("closeHelp");
+
+helpBtn.addEventListener("click", function (event) {
+  event.stopPropagation();
+  helpModal.classList.remove("hidden");
+});
+
+closeHelp.addEventListener("click", function () {
+  helpModal.classList.add("hidden");
+});
+
+helpModal.addEventListener("click", function (event) {
+  if (event.target === helpModal) {
+    helpModal.classList.add("hidden");
+  }
+});
