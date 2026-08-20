@@ -109,6 +109,9 @@ img {
 }
 
 .navbar-nav {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
   flex-direction: row !important;
   z-index: 1;
 }
