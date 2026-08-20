@@ -137,7 +137,7 @@ img {
   position: absolute;
   top: 50px;
   left: 0;
-  width: 85vw;
+  width: 100vw;
   height: calc(100vh - 56px); /* Subtract the height of the navbar */
   object-fit: cover;
   overflow: hidden;
