@@ -1,15 +1,41 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* font-family: Arial, sans-serif; */
+  background: #f5f5f5;
+  color: #222;
+}
+
+.app {
+  width: min(95vw, 700px);
+  height: calc(100vh - 96px);
+  margin: 20px auto;
+  padding: 20px;
+
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+  z-index: 1;
+}
+
 .help-btn {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-
   background: transparent;
   border: 1px solid #a83fd8;
   color: #a83fd8;
-
   font-size: 0.9rem;
   font-weight: bold;
 
@@ -25,6 +51,7 @@
   background: #a83fd8;
   color: white;
 }
+
 .help-modal {
   position: fixed;
   inset: 0;
@@ -51,6 +78,7 @@
 .help-box h2 {
   margin-top: 0;
 }
+
 .help-box p {
   font-size: 0.9rem;
   line-height: 1.4;
@@ -66,32 +94,6 @@
   font-size: 1rem;
   padding: 0;
   cursor: pointer;
-}
-body {
-  margin: 0;
-  height: 100vh;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  color: #222;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.app {
-  width: min(95vw, 700px);
-  height: calc(100vh - 40px);
-  /* padding: clamp(8px, 1.5vh, 18px); */
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
 }
 
 h1 {
@@ -118,36 +120,27 @@ label:hover {
   0% {
     transform: translate(0, 0);
   }
+
   25% {
     transform: translate(-4px, 0);
   }
+
   50% {
     transform: translate(4px, 0);
   }
+
   75% {
     transform: translate(-2px, 0);
   }
+
   100% {
     transform: translate(0, 0);
   }
 }
 
-/* button {
-  width: min(50vw, 50vh);
-  height: min(50vw, 50vh);
-
-  border-radius: 50%;
-  font-size: clamp(1.5rem, 4vw, 3rem);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-} */
-
 #toggleBtn {
-  width: min(50vw, 50vh);
-  height: min(50vw, 50vh);
+  width: min(50vw, 42vh);
+  height: min(50vw, 42vh);
 
   border-radius: 50%;
   font-size: clamp(1.5rem, 4vw, 3rem);
@@ -159,7 +152,12 @@ label:hover {
 
   position: relative;
   z-index: 2;
+
   transition: transform 0.1s ease;
+}
+
+#toggleBtn:active {
+  transform: scale(0.95);
 }
 
 .speaker-icon {
@@ -173,16 +171,11 @@ label:hover {
   transform: scale(1.5);
 }
 
-/* .pendulum-area {
-  width: min(220px, 45vw);
-  margin: 4px auto;
-} */
-
 .pendulum-area {
   position: absolute;
 
-  width: min(35vw, 35vh); /* same base as button */
-  max-width: 100%; /* never exceed button */
+  width: min(35vw, 30vh);
+  max-width: 100%;
 
   left: 50%;
   top: 50%;
@@ -201,30 +194,25 @@ label:hover {
   border-radius: 200px;
 }
 
-/* .bob {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 28px;
-  height: 28px;
-  background: #555;
-  border-radius: 50%;
-  transform: translate(0px, -50%);
-  transition-property: transform;
-  transition-timing-function: linear;
-} */
-
 .bob {
   position: absolute;
   top: 50%;
   left: 0;
+
   width: clamp(14px, 5vw, 28px);
   height: clamp(14px, 5vw, 28px);
+
   background: #555;
   border-radius: 50%;
-  transform: translate(0px, -50%);
+
+  transform: translate(0, -50%);
   transition-property: transform;
   transition-timing-function: linear;
+}
+
+.bob.flash {
+  background: #ff4d4d;
+  box-shadow: 0 0 16px rgba(255, 77, 77, 0.8);
 }
 
 .grid,
@@ -234,15 +222,11 @@ label:hover {
   width: 100%;
 }
 
-.bob.flash {
-  background: #ff4d4d;
-  box-shadow: 0 0 16px rgba(255, 77, 77, 0.8);
-}
-
 .status {
   margin-top: 18px;
   font-weight: bold;
 }
+
 .volume-control {
   position: fixed;
   right: 24px;
@@ -250,6 +234,7 @@ label:hover {
   transform: translateY(-50%);
 
   width: auto;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -300,10 +285,15 @@ label:hover {
   content: "";
   position: absolute;
   inset: 0;
+
+  font-family: Arial, sans-serif;
+
   background: rgba(168, 63, 216, 0.25);
   opacity: 0;
+
   pointer-events: none;
   transition: opacity 0.08s ease;
+
   border-radius: 16px;
   z-index: 0;
 }
@@ -312,26 +302,12 @@ label:hover {
   opacity: 1;
 }
 
-/* button {
-  position: relative;
-  z-index: 2;
-} */
-.app {
-  position: relative;
-  z-index: 1;
-}
 #tempo {
   padding: 0;
   margin: 0;
 }
+
 #tempoValue {
   color: #a83fd8;
   font-weight: bold;
-}
-
-#toggleBtn:active {
-  transform: scale(0.95);
-}
-#toggleBtn {
-  transition: transform 0.1s ease;
 }
