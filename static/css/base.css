@@ -353,3 +353,18 @@ img {
   height: 10rem;
   object-fit: contain;
 }
+
+.intro-carousel {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+}
+
+.intro-carousel:active {
+  cursor: grabbing;
+}

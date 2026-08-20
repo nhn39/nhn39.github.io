@@ -85,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
         {
           text: "dancing",
           type: "video",
-          videoType: "local",
-          src: "./static/vid/countdown_to_class_7.mp4",
+          videoType: "drive",
+          src: "https://drive.google.com/file/d/1PI3gh08A3QNA-00dJQvNDpwsFQPuWGV3/view?usp=drive_link",
         },
       ],
     },

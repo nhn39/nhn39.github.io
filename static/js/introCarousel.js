@@ -6,6 +6,7 @@ const next = document.querySelector(".intro-next");
 
 let current = 0;
 
+
 function showSlide(index) {
 
     slides[current].classList.remove("active");
@@ -35,3 +36,14 @@ dots.forEach(function (dot, index) {
     });
 
 });
+
+let startX = 0;
+let isDragging = false;
+
+introCarousel.addEventListener("pointerdown", function (event) {
+    startX = event.clientX;
+    isDragging = true;
+
+    introCarousel.setPointerCapture(event.pointerId);
+});
+
