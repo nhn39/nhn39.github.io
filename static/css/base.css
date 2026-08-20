@@ -1,10 +1,14 @@
-body {
+body :not(.home-page) .content {
+  margin-left: 30px;
   font-family: "Avenir";
   font-size: 1.4rem;
   background: #eee;
   /* padding: 30px; */
 }
 
+.page-content {
+  padding: 0 30px;
+}
 header {
   background: #006298;
 }
@@ -119,7 +123,7 @@ img {
   z-index: 1000;}
 
 .navbar-nav {
-  background-color: rgba(0, 0, 0, 0.8) !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
   flex-direction: row !important;
@@ -131,6 +135,7 @@ img {
 }
 
 .nav-link {
+  font-size: 1.3rem;
   padding-right: 0.5rem; /* Adjust for better spacing between links */
   color: hsl(269, 61%, 42%) !important; /* Adjust color for all navbar links */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
