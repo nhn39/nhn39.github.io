@@ -107,16 +107,19 @@ img {
   object-fit: cover;
   display: block;
 }
-
-.navbar {
+.home-page .navbar {
   position: absolute;
+  top: 0;
+  left: 0;
+}
+.navbar {
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;}
 
 .navbar-nav {
-  background-color: rgba(0, 0, 0, 0.9) !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
   flex-direction: row !important;
@@ -338,4 +341,10 @@ img {
 
 .intro-dot.active {
     background: white;
+}
+
+.navbar-logo {
+  width: 10rem;
+  height: 10rem;
+  object-fit: contain;
 }
