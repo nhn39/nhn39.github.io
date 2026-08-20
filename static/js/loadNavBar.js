@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const navbar = `
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="index.html">Nam Nguyen</a>
             <ul class="navbar-nav">
                 <li class="nav-item">
