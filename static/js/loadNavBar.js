@@ -65,9 +65,15 @@ toggle.addEventListener("click", function () {
 });
 document.addEventListener("click", function (event) {
     const navbarElement = document.querySelector(".navbar");
+ const clickedCarouselControl =
+    event.target.closest(".intro-prev") ||
+    event.target.closest(".intro-next") ||
+    event.target.closest(".intro-dot");    
     if (
         navItems.classList.contains("show") &&
-        !navbarElement.contains(event.target)) {
+        !navbarElement.contains(event.target) &&
+        !clickedCarouselControl
+    ) {
             navItems.classList.remove("show");
             toggle.setAttribute("aria-expanded", "false");  
             sessionStorage.setItem("menuOpen", "false");
