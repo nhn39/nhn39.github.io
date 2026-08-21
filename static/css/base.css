@@ -62,11 +62,11 @@ header {
     height: auto;
 } */
 
-img {
+/* img {
   width: 60%; /* Scale based on the width of the container */
   max-width: 100%; /* Never be larger than the container */
   height: auto; /* Maintain aspect ratio */
-}
+} */
 
 .unavailable {
   opacity: 0.25;
