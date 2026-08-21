@@ -363,25 +363,31 @@ img {
 }
 
 .navbar-logo {
+  
   width: auto;
-  height: clamp(40px, 5vw, 60px);
+  height: clamp(68px, 5vw, 88px);
   object-fit: contain;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 1))
+    drop-shadow(0 0 4px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  
 }
 
 /* ===== NAVIGATION ===== */
 
 .navbar {
+  padding-left: clamp(5px, 1vw, 10px);
   display: flex;
   align-items: center;
   width: 100%;
   z-index: 1000;
 }
 
-.navbar-logo {
+/* .navbar-logo {
   width: auto;
   height: clamp(40px, 6vw, 60px);
   object-fit: contain;
-}
+} */
 
 /* Desktop: horizontal menu */
 .navbar-nav {

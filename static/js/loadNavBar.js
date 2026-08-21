@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const navbar = `
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="index.html">
-    <img src="static/img/nam_logo.png" alt="Nam Nguyen Home" class="navbar-logo">
+    <img src="static/img/nam_logo_1.png" alt="Nam Nguyen Home" class="navbar-logo">
 </a>
 <button
         class="navbar-toggle"
