@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <img src="static/img/nam_logo.png" alt="Nam Nguyen Home" class="navbar-logo">
 </a>
 
+
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">About</a>
@@ -30,4 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </ul>
     </nav>`;
   document.body.insertAdjacentHTML("afterbegin", navbar);
+
+
 });
