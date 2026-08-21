@@ -4,6 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
         <a class="navbar-brand" href="index.html">
     <img src="static/img/nam_logo.png" alt="Nam Nguyen Home" class="navbar-logo">
 </a>
+<button
+        class="navbar-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
 
 
             <ul class="navbar-nav">
@@ -32,5 +40,37 @@ document.addEventListener("DOMContentLoaded", function () {
     </nav>`;
   document.body.insertAdjacentHTML("afterbegin", navbar);
 
+  const toggle = document.querySelector(".navbar-toggle");
+  const navItems = document.querySelector(".navbar-nav");   
 
+//   toggle.addEventListener("click", function () {
+//     navItems.classList.toggle("show");
+//   });
+
+const menuOpen =sessionStorage.getItem("menuOpen") === "true";
+if (menuOpen) {
+  navItems.classList.add("show");
+  toggle.setAttribute("aria-expanded", "true");
+} else {
+  navItems.classList.remove("show");
+  toggle.setAttribute("aria-expanded", "false");   
+}
+
+toggle.addEventListener("click", function () {
+  navItems.classList.toggle("show");
+  const isOpen = navItems.classList.contains("show");
+  sessionStorage.setItem("menuOpen" , isOpen);
+  toggle.setAttribute("aria-expanded", isOpen)
+
+});
+document.addEventListener("click", function (event) {
+    const navbarElement = document.querySelector(".navbar");
+    if (
+        navItems.classList.contains("show") &&
+        !navbarElement.contains(event.target)) {
+            navItems.classList.remove("show");
+            toggle.setAttribute("aria-expanded", "false");  
+            sessionStorage.setItem("menuOpen", "false");
+        }
+});
 });
