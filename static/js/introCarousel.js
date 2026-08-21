@@ -6,6 +6,15 @@ const next = document.querySelector(".intro-next");
 
 let current = 0;
 
+document.addEventListener("DOMContentLoaded", function () {
+    const introVideo = document.getElementById("intro-video");
+
+    if (window.innerWidth <= 900) {
+        introVideo.src = "static/img/piano_720p.mp4";
+    } else {
+        introVideo.src = "static/img/piano_1.mp4";
+    }
+});
 
 function showSlide(index) {
 
